@@ -1,0 +1,46 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  color-scheme: dark;
+}
+
+body {
+  background:
+    linear-gradient(rgba(10, 37, 64, 0.92), rgba(10, 37, 64, 0.92)),
+    repeating-linear-gradient(0deg, transparent, transparent 39px, rgba(255, 255, 255, 0.04) 39px, rgba(255, 255, 255, 0.04) 40px),
+    repeating-linear-gradient(90deg, transparent, transparent 39px, rgba(255, 255, 255, 0.04) 39px, rgba(255, 255, 255, 0.04) 40px),
+    #0a2540;
+  background-attachment: fixed;
+  color: #f0f4ff;
+  min-height: 100vh;
+}
+
+.blueprint-card {
+  background: rgba(15, 48, 96, 0.55);
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  backdrop-filter: blur(2px);
+}
+
+.blueprint-table th,
+.blueprint-table td {
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  padding: 0.5rem 0.75rem;
+}
+
+.blueprint-table th {
+  background: rgba(255, 255, 255, 0.08);
+  text-align: left;
+  font-weight: 600;
+}
+
+.status-ok {
+  color: #7ee787;
+}
+.status-review {
+  color: #f7b955;
+}
+.status-concern {
+  color: #ff8080;
+}
