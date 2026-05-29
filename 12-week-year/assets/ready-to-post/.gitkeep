@@ -1,0 +1,3 @@
+# Generated content gets staged here by /run-week, organized as:
+#   ready-to-post/<week>/<business>/<channel>-<theme>.md  (copy + asset links)
+# Once published, move the week's folder to assets/published/.
