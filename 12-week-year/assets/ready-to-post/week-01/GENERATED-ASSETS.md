@@ -19,8 +19,15 @@ Spend: 6 images (~12cr) + 4 videos (~180cr) + 2 discarded off-brand images. ~190
 ## Star Gazer ✅ on-brand ("Double-Take" angle, real product ref a1d0071e)
 - **Hero image** (`4aed28f8`) — real novelty tee · 4:5
   https://d8j0ntlcm91z4.cloudfront.net/user_3AMPmxz8DiXpnetoGfpEu12zXpf/hf_20260529_143553_4aed28f8-6fb3-4f54-9c5e-8ae64c86b39e.png
-- **Lifestyle image** (`d8049053`) — gas-station double-take · 4:5 · ⏳ rendering
-- **"Double-Take" reel** (`f54717bd`) — 9:16 · ⏳ rendering · virality score on completion
+- **Lifestyle image** (`d8049053`) — gas-station double-take · 4:5
+  https://d8j0ntlcm91z4.cloudfront.net/user_3AMPmxz8DiXpnetoGfpEu12zXpf/hf_20260529_143556_d8049053-1df2-48c7-9c70-58da82356fe2.png
+- **"Double-Take" reel** (`f54717bd`) — 9:16 · ⏳ still rendering · virality score on completion
+
+## Virality analysis
+- TMES reel → job `ba2b751a` · CN Capital ad → job `d106f932`
+- Output is an **interactive dashboard in Grow OS/Higgsfield** (open the
+  Virality Predictor widget to see hook strength / retention / scores).
+  Numeric scores are not returned to the chat as text.
 
 ## Discarded (off-brand celestial test)
 - `98a46627`, `76a94cfb` (images), `33bf8927` (video) — wrong product, not used.
