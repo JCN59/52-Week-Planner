@@ -1,55 +1,40 @@
 # Star Gazer Swag Shop — Week 1 — Creatives + Promo
-**Theme:** Summer kickoff drop
+**Theme:** "The Double-Take" — the shirt does the marketing for you
+**Product:** Novelty trucker/working-man humor tee (real product, ref image `a1d0071e`)
 **Channel:** Instagram (primary) + Facebook
-**Status:** ✅ Captions ready · 🟡 3 visuals + promo HELD (awaiting "go" — Higgsfield credits)
+**Status:** ✅ Captions ready · 🟡 new on-brand visuals rendering · virality scoring queued
 
-> 🔎 `[TREND]` markers filled by live Apify hashtag/competitor research.
-> 🎯 Plan: generate 3 creatives, run `virality_predictor` on each, post the
-> top scorers first.
+> Fresh angle (not the driveway skit): everyday spots where strangers can't
+> help but read the shirt and grin. Tagline: **"Wear the punchline."**
 
 ---
 
-## Creative 1 — Hero product shot (image)
+## Creative 1 — Hero product shot (image `4aed28f8`)
 **Caption:**
-☀️ The Summer Kickoff Drop is HERE. Fresh designs, limited runs — when
-they're gone, they're gone. Tag someone who needs this in their closet. 👇
-`#[TREND hashtags]` #StarGazerSwag #SummerDrop
+Some shirts get compliments. Ours get double-takes. 😏
+The tee that does the talking — wear the punchline. 🚛
+🛒 Shop the drop, link in bio. #StarGazerSwag #TruckerHumor
 
-**Higgsfield prompt:** "High-quality e-commerce hero shot of [PRODUCT] against
-a bright summer-toned background, soft studio lighting, crisp product focus,
-social-ready 4:5. Vibrant, energetic, premium DTC aesthetic."
-
----
-
-## Creative 2 — Lifestyle / UGC-style (image or short video)
+## Creative 2 — "Double-take" lifestyle (image `d8049053`)
 **Caption:**
-Made for golden hour. 🌅 The new drop looks even better in real life. Which
-design are you grabbing first?
-#StarGazerSwag #SummerVibes `#[TREND]`
+POV: you wore THE shirt to the gas station again. ⛽️😂
+You don't start the conversation — the shirt does.
+Tag a buddy who needs one. 👇 #StarGazerSwag
 
-**Higgsfield prompt:** "Authentic UGC-style lifestyle photo of a real person
-wearing/using [PRODUCT] outdoors at golden hour, candid, phone-camera feel,
-4:5 vertical. Relatable, not over-produced."
-
----
-
-## Creative 3 — Short video reel (motion)
+## Creative 3 — "The Double-Take" reel (video `f54717bd`)
 **Caption:**
-New drop. New energy. ⚡️ Limited quantities — link in bio.
-#StarGazerSwag #SummerDrop `#[TREND]`
-
-**Higgsfield prompt:** `generate_video`, 9:16, ~10–15s — "Dynamic product
-reveal of [PRODUCT], quick cuts, summer color grade, upbeat, text overlay
-'SUMMER DROP — LIMITED'." **Run virality_predictor; post highest score first.**
+He didn't say a word. The shirt did all the talking. 😎🚛
+New drop live now — link in bio. #StarGazerSwag #TruckerHumor #ShopNow
+> Run `virality_predictor`; post the highest-scoring cut first.
 
 ---
 
-## Promo (first-week offer to test the loop)
-**Offer:** 15% off the Summer Drop through Sunday — code **KICKOFF15**
-**Post caption:**
-🎉 Launch week only: 15% off the entire Summer Drop with code **KICKOFF15**.
-Ends Sunday night. Don't sleep on it — limited stock. 🛒 [link in bio]
-#StarGazerSwag #SummerDrop #LimitedTime
+## Promo (launch-week offer to test the content→sales loop)
+**Offer:** 15% off the drop through Sunday — code **LOADS15**
+**Caption:**
+🎉 Launch week only: 15% off with code **LOADS15** — ends Sunday.
+Wear the punchline before everyone else does. 🛒 [link in bio]
+#StarGazerSwag #LimitedTime
 
-> Track redemptions of KICKOFF15 → this is your first content→sales data
-> point toward the $3,000 cycle goal.
+> Track LOADS15 redemptions → first content→sales data point toward the
+> $3,000 cycle goal.
