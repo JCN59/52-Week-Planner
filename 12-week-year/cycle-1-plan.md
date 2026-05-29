@@ -4,23 +4,27 @@
 > (the result you want) and **lead measures** (weekly actions you fully
 > control). The discipline of *fewer goals* is what fixes the January drift.
 >
-> Fill in every `___`. Keep total weekly lead actions across all three
-> businesses to ~12–15, or you've over-scoped — cut until it fits a real week.
+> The numbers below are **starter targets** Claude set to get you moving —
+> realistic for a solo owner restarting all three engines. Tune them in your
+> first Monday review (`/score-week`) once you see what a real week holds.
+> Keep total weekly lead actions across all three to ~12–15.
 
 ---
 
 ## TMES — The Mortgage Exchange Service
 
-- **12-week goal (lag):** `___ funded loans` by Aug 23
+- **12-week goal (lag):** **6 funded loans** by Aug 23 _(≈1 every 2 weeks —
+  a believable rebuild pace; raise it if your pipeline is already warm)_
 - **Weekly lead measures:**
   - [ ] `15` realtor / referral-partner touches
-  - [ ] `___` borrower follow-ups
+  - [ ] `10` borrower follow-ups
   - [ ] **Content:** `2` Facebook posts · `1` blog post · `1` video
 - **This week's content theme is chosen every Monday in the weekly plan.**
 
 ## CN Capital Group — Commercial Mortgage
 
-- **12-week goal (lag):** `___ deals in active pipeline` by Aug 23
+- **12-week goal (lag):** **3 deals in active pipeline** by Aug 23
+  _(commercial cycles are long; a pipeline goal beats a "closed" goal here)_
 - **Weekly lead measures:**
   - [ ] `10` qualified property-owner / broker contacts
   - [ ] `2` deal packages reviewed
@@ -28,10 +32,11 @@
 
 ## Star Gazer Swag Shop
 
-- **12-week goal (lag):** `$___ in sales` by Aug 23
+- **12-week goal (lag):** **$3,000 in sales** by Aug 23 _(≈$250/week —
+  a starter target to validate the content→sales loop, then scale)_
 - **Weekly lead measures:**
   - [ ] `3` creatives produced + virality-scored
-  - [ ] `___` posts published
+  - [ ] `5` posts published
   - [ ] **Content:** `1` promo / product drop tested
 
 ---
