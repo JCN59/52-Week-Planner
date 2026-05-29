@@ -30,7 +30,13 @@ Steps:
 
 7. Update the lag-measure check-in (funded loans / pipeline deals / sales).
 
-8. End by prompting him to run `/plan-week` for the new week.
+8. **Refresh the dashboard.** Update the `data` block in
+   `12-week-year/dashboard.html`: each business's `current` value (loans /
+   deals / sales to date), its `lastScore` (this week's %), and append/fill
+   this week's row in `weeks` (TMES/CNC/SGS scores). This keeps the visual
+   "where's each business right now" view current.
+
+9. End by prompting him to run `/plan-week` for the new week.
 
 Be direct and kind. The number is feedback, not judgment — its job is to show
 where to steer while there's still time.

@@ -1,0 +1,123 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>12 Week Year — Chris Nassief</title>
+<!--
+  Auto-generated dashboard. Regenerated each Monday by /score-week from
+  cycle-1-plan.md + the weekly scorecards. Open in any browser — no server.
+  EDIT THE `data` OBJECT BELOW to update by hand; /score-week does it for you.
+-->
+<style>
+  :root{
+    --bg:#0f1216; --card:#171c23; --line:#262e39; --muted:#8a97a8;
+    --text:#e8edf3; --good:#37c97f; --warn:#f5a623; --bad:#ef5b5b;
+    --accent:#5b8def;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;font-family:-apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-serif;
+    background:var(--bg);color:var(--text);padding:28px;line-height:1.45}
+  h1{font-size:22px;margin:0 0 2px}
+  .sub{color:var(--muted);font-size:13px;margin-bottom:24px}
+  .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:16px}
+  .card{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:18px}
+  .biz{display:flex;justify-content:space-between;align-items:center;margin-bottom:4px}
+  .biz h2{font-size:16px;margin:0}
+  .tag{font-size:11px;color:var(--muted)}
+  .goal{font-size:13px;color:var(--muted);margin:10px 0 6px}
+  .bar{height:12px;background:#0c0f13;border-radius:8px;overflow:hidden;border:1px solid var(--line)}
+  .fill{height:100%;border-radius:8px}
+  .row{display:flex;justify-content:space-between;font-size:13px;margin-top:6px}
+  .pill{display:inline-block;font-size:11px;font-weight:600;padding:3px 9px;border-radius:999px}
+  .on{background:rgba(55,201,127,.15);color:var(--good)}
+  .off{background:rgba(239,91,91,.15);color:var(--bad)}
+  .neu{background:rgba(138,151,168,.15);color:var(--muted)}
+  .score-card{margin-top:22px}
+  table{width:100%;border-collapse:collapse;font-size:13px;margin-top:10px}
+  th,td{text-align:center;padding:7px 6px;border-bottom:1px solid var(--line)}
+  th{color:var(--muted);font-weight:600}
+  td.week{text-align:left;color:var(--muted)}
+  .cell-good{color:var(--good)} .cell-bad{color:var(--bad)} .cell-empty{color:#3a4350}
+  .legend{font-size:12px;color:var(--muted);margin-top:10px}
+  .target{color:var(--accent);font-weight:600}
+  footer{color:var(--muted);font-size:12px;margin-top:26px}
+</style>
+</head>
+<body>
+  <h1>The 12 Week Year — Chris Nassief</h1>
+  <div class="sub" id="cycleline"></div>
+
+  <div class="grid" id="bizgrid"></div>
+
+  <div class="card score-card">
+    <div class="biz"><h2>Weekly Execution Scoreboard</h2>
+      <span class="tag">Target: <span class="target">85%+</span></span></div>
+    <table id="scoreboard"></table>
+    <div class="legend">Score = planned lead actions completed. Two weeks under
+      85% for a business = intervene there now.</div>
+  </div>
+
+  <footer id="footer"></footer>
+
+<script>
+/* ====== EDIT THIS BLOCK (or let /score-week regenerate it) ====== */
+const data = {
+  cycle: "Cycle 1 · Mon Jun 1 → Sun Aug 23, 2026",
+  generated: "2026-05-29 (pre-cycle setup)",
+  businesses: [
+    { code:"TMES", name:"The Mortgage Exchange Service",
+      goalLabel:"6 funded loans", current:0, target:6, unit:"loans",
+      lastScore:null },
+    { code:"CNC", name:"CN Capital Group",
+      goalLabel:"3 deals in pipeline", current:0, target:3, unit:"deals",
+      lastScore:null },
+    { code:"SGS", name:"Star Gazer Swag Shop",
+      goalLabel:"$3,000 in sales", current:0, target:3000, unit:"$",
+      lastScore:null },
+  ],
+  // one row per scored week: {week, dates, TMES, CNC, SGS}  (null = not scored yet)
+  weeks: [
+    {week:1, dates:"Jun 1–7", TMES:null, CNC:null, SGS:null},
+  ],
+};
+/* ================================================================ */
+
+document.getElementById('cycleline').textContent =
+  data.cycle + "  ·  updated " + data.generated;
+
+function pct(c,t){ return t>0 ? Math.min(100, Math.round(c/t*100)) : 0; }
+function barColor(p){ return p>=66?'var(--good)':p>=33?'var(--warn)':'var(--accent)'; }
+function fmt(v,u){ return u==="$" ? "$"+v.toLocaleString() : v+" "+u; }
+
+document.getElementById('bizgrid').innerHTML = data.businesses.map(b=>{
+  const p = pct(b.current,b.target);
+  let status='<span class="pill neu">Not started</span>';
+  if(b.lastScore!=null) status = b.lastScore>=85
+    ? '<span class="pill on">On track ('+b.lastScore+'%)</span>'
+    : '<span class="pill off">Needs correction ('+b.lastScore+'%)</span>';
+  return `<div class="card">
+    <div class="biz"><h2>${b.code}</h2>${status}</div>
+    <div class="tag">${b.name}</div>
+    <div class="goal">12-week goal: <b>${b.goalLabel}</b></div>
+    <div class="bar"><div class="fill" style="width:${p}%;background:${barColor(p)}"></div></div>
+    <div class="row"><span>${fmt(b.current,b.unit)}</span><span>${p}% of goal</span></div>
+  </div>`;
+}).join('');
+
+const head = "<tr><th class='week'>Week</th><th>TMES</th><th>CNC</th><th>SGS</th><th>Avg</th></tr>";
+const rows = data.weeks.map(w=>{
+  const vals=[w.TMES,w.CNC,w.SGS];
+  const done=vals.filter(v=>v!=null);
+  const avg = done.length? Math.round(done.reduce((a,b)=>a+b,0)/done.length):null;
+  const cell=v=> v==null?"<td class='cell-empty'>—</td>"
+    :`<td class="${v>=85?'cell-good':'cell-bad'}">${v}%</td>`;
+  return `<tr><td class="week">Wk ${w.week} · ${w.dates}</td>${cell(w.TMES)}${cell(w.CNC)}${cell(w.SGS)}${avg==null?"<td class='cell-empty'>—</td>":`<td class="${avg>=85?'cell-good':'cell-bad'}">${avg}%</td>`}</tr>`;
+}).join('');
+document.getElementById('scoreboard').innerHTML = head+rows;
+
+document.getElementById('footer').textContent =
+  "Open this file in any browser. Re-run /score-week each Monday to refresh.";
+</script>
+</body>
+</html>
