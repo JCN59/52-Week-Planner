@@ -9,7 +9,7 @@ Rules:
 - This is the 2026 World Cup hosted by the USA, Canada and Mexico (48 teams).
 - Your output MUST be a single JSON object matching the schema. No prose outside the JSON.`;
 
-export function buildUserPrompt(today: string): string {
+export function buildUserPrompt(today: string, liveContext?: string): string {
   const teamLines = TEAMS.map(
     (t) =>
       `${t.name} (Group ${t.group}, tier ${t.tier}, FIFA rank ~${t.fifaRank}, star: ${t.star.name})`,
@@ -27,9 +27,14 @@ export function buildUserPrompt(today: string): string {
     })
     .join("\n");
 
+  const liveBlock = liveContext
+    ? `\nLIVE DATA (real results fetched just now — prioritize this over the snapshot below):\n${liveContext}\n`
+    : "";
+
   return `Write today's beginner-friendly World Cup briefing for ${today}.
 
 Pre-tournament favorites: ${FAVORITES.join(", ")}.
+${liveBlock}
 
 The 48 teams:
 ${teamLines}

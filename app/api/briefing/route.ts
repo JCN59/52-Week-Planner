@@ -2,10 +2,43 @@ import { NextRequest, NextResponse } from "next/server";
 import Anthropic from "@anthropic-ai/sdk";
 import { buildMockBriefing } from "@/lib/mock-briefing";
 import { SYSTEM_PROMPT, buildUserPrompt } from "@/lib/prompt";
+import { fetchScores, fetchStandings } from "@/lib/live";
 import type { DailyBriefing } from "@/lib/types";
 
 export const runtime = "nodejs";
 export const maxDuration = 60;
+
+// Pull real results (if reachable) so the AI briefing reflects what actually
+// happened. Returns a compact text block, or undefined if the network is down.
+async function buildLiveContext(date: string): Promise<string | undefined> {
+  const yyyymmdd = date.replace(/-/g, "");
+  const parts: string[] = [];
+  try {
+    const matches = await fetchScores(yyyymmdd);
+    const played = matches.filter((m) => m.state !== "pre");
+    if (played.length) {
+      parts.push(
+        "Results/in-play today: " +
+          played
+            .map((m) => `${m.home.name} ${m.home.score ?? "-"}–${m.away.score ?? "-"} ${m.away.name} (${m.status})`)
+            .join("; "),
+      );
+    }
+  } catch {
+    /* ignore */
+  }
+  try {
+    const groups = await fetchStandings();
+    const lines = Object.entries(groups).map(([g, rows]) => {
+      const sorted = [...rows].sort((a, b) => b.points - a.points);
+      return `Group ${g}: ${sorted.map((r) => `${r.team} ${r.points}pt`).join(", ")}`;
+    });
+    if (lines.length) parts.push("Current standings:\n" + lines.join("\n"));
+  } catch {
+    /* ignore */
+  }
+  return parts.length ? parts.join("\n") : undefined;
+}
 
 export async function POST(req: NextRequest): Promise<NextResponse> {
   const body = await req.json().catch(() => ({}));
@@ -22,13 +55,14 @@ export async function POST(req: NextRequest): Promise<NextResponse> {
   }
 
   const client = new Anthropic({ apiKey });
+  const liveContext = await buildLiveContext(today);
 
   try {
     const response = await client.messages.create({
       model: "claude-opus-4-8",
       max_tokens: 4000,
       system: SYSTEM_PROMPT,
-      messages: [{ role: "user", content: buildUserPrompt(today) }],
+      messages: [{ role: "user", content: buildUserPrompt(today, liveContext) }],
       output_config: {
         format: {
           type: "json_schema",

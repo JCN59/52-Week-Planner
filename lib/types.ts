@@ -49,6 +49,42 @@ export type GlossaryItem = {
   meaning: string;
 };
 
+// ---- Live data types (fetched from ESPN's free public API at runtime) ----
+
+export type MatchState = "pre" | "in" | "post";
+
+export type LiveCompetitor = {
+  name: string; // canonical team name (matched to our data when possible)
+  flag: string; // emoji flag ("🏳️" if unknown)
+  score: number | null;
+  winner: boolean;
+};
+
+export type LiveMatch = {
+  id: string;
+  date: string; // ISO timestamp
+  state: MatchState;
+  status: string; // human label, e.g. "FT", "67'", "8:00 PM"
+  group: string | null; // "A".."L" when known
+  home: LiveCompetitor;
+  away: LiveCompetitor;
+};
+
+export type ScoresResponse = {
+  source: "live" | "unavailable";
+  date: string; // YYYY-MM-DD requested
+  matches: LiveMatch[];
+  fetchedAt: string;
+  error?: string;
+};
+
+export type StandingsResponse = {
+  source: "live" | "snapshot";
+  groups: Record<string, GroupRow[]>;
+  fetchedAt: string;
+  error?: string;
+};
+
 // ---- Daily Briefing types (the AI-generated "what's going on today") ----
 
 export type BriefingTeam = {

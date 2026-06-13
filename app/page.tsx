@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import DailyBriefingView from "@/components/DailyBriefing";
+import ScoresView from "@/components/ScoresView";
 import HowItWorks from "@/components/HowItWorks";
 import GroupsView from "@/components/GroupsView";
 import RankingsTable from "@/components/RankingsTable";
@@ -11,6 +12,7 @@ import { TOURNAMENT } from "@/lib/worldcup-data";
 
 const TABS = [
   { id: "today", label: "Today", emoji: "📅" },
+  { id: "scores", label: "Scores", emoji: "⚽" },
   { id: "how", label: "How it works", emoji: "📖" },
   { id: "groups", label: "Groups", emoji: "🗂️" },
   { id: "rankings", label: "Rankings", emoji: "📊" },
@@ -55,6 +57,7 @@ export default function HomePage() {
 
       <section>
         {tab === "today" && <DailyBriefingView />}
+        {tab === "scores" && <ScoresView />}
         {tab === "how" && <HowItWorks />}
         {tab === "groups" && <GroupsView />}
         {tab === "rankings" && <RankingsTable />}
