@@ -85,6 +85,23 @@ export type StandingsResponse = {
   error?: string;
 };
 
+export type BracketRoundResponse = {
+  id: string;
+  name: string;
+  start: string;
+  end: string;
+  expected: number;
+  plain: string;
+  matches: LiveMatch[];
+};
+
+export type BracketResponse = {
+  source: "live" | "upcoming";
+  rounds: BracketRoundResponse[];
+  fetchedAt: string;
+  error?: string;
+};
+
 // ---- Daily Briefing types (the AI-generated "what's going on today") ----
 
 export type BriefingTeam = {

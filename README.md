@@ -8,6 +8,7 @@ A simple, plain-English tracker for the **2026 FIFA World Cup** (hosted by the U
 - **⚽ Scores** — **live scores**, updated automatically every 30 seconds during in-progress games. Browse any day with the prev/next buttons. Pulled from ESPN&apos;s free public API (no key required).
 - **📖 How it works** — the whole tournament explained for newcomers: the basics, the **tiers** (how teams are seeded into 4 pots), the **path to the final** (group stage → Round of 32 → 16 → quarters → the "Final Four" semis → final), host cities, and a soccer glossary.
 - **🗂️ Groups** — standings for all 12 groups of 4, with the top-2 qualifying spots highlighted. Uses **live standings** when reachable, and falls back to a curated snapshot otherwise.
+- **🏆 Bracket** — the knockout tree (Round of 32 → 16 → quarters → "Final Four" semis → final). Shows a skeleton until the knockouts begin (June 28), then **auto-fills with real matchups and live scores**.
 - **📊 Rankings** — all 48 teams sorted by FIFA world ranking.
 - **🌍 Teams** — all 48 countries with a one-line intro and a star player to watch, filterable by tier.
 - **🗓️ Schedule** — the rounds, key dates, and games to circle.
@@ -44,6 +45,7 @@ app/
   api/briefing/route.ts   # POST: generates the daily update (Claude + live data, or mock)
   api/scores/route.ts     # GET: live scores for a date (ESPN, graceful fallback)
   api/standings/route.ts  # GET: live group standings (ESPN, snapshot fallback)
+  api/bracket/route.ts    # GET: knockout bracket, auto-filled from live results
   page.tsx                # tabbed UI
   layout.tsx
   globals.css             # pitch-green theme
@@ -52,12 +54,14 @@ components/
   ScoresView.tsx          # "Scores" tab — live, auto-refreshing
   HowItWorks.tsx          # beginner explainer + tiers + bracket + glossary
   GroupsView.tsx          # 12 group tables (live or snapshot)
+  BracketView.tsx         # "Bracket" tab — knockout tree, auto-filling
   RankingsTable.tsx       # FIFA rankings
   TeamsView.tsx           # all 48 teams + star players
   ScheduleView.tsx        # rounds + key fixtures
 lib/
   worldcup-data.ts        # teams, groups, tiers, schedule, glossary
   live.ts                 # ESPN fetch + normalization to our types
+  bracket.ts              # knockout round definitions + bucketing live matches
   types.ts
   prompt.ts               # Claude system + user prompt for the briefing
   mock-briefing.ts        # fallback used when no API key

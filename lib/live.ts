@@ -59,8 +59,10 @@ async function getJson(url: string): Promise<any> {
 
 // ---- Scores ----------------------------------------------------------------
 
-export async function fetchScores(yyyymmdd: string): Promise<LiveMatch[]> {
-  const url = `${ESPN}/site/v2/sports/soccer/fifa.world/scoreboard?dates=${yyyymmdd}`;
+// `dates` may be a single day ("20260613") or a range ("20260628-20260719"),
+// matching ESPN's scoreboard `dates` query parameter.
+export async function fetchScores(dates: string): Promise<LiveMatch[]> {
+  const url = `${ESPN}/site/v2/sports/soccer/fifa.world/scoreboard?dates=${dates}`;
   const data = await getJson(url);
   const events: any[] = Array.isArray(data?.events) ? data.events : [];
 

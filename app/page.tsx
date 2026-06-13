@@ -5,6 +5,7 @@ import DailyBriefingView from "@/components/DailyBriefing";
 import ScoresView from "@/components/ScoresView";
 import HowItWorks from "@/components/HowItWorks";
 import GroupsView from "@/components/GroupsView";
+import BracketView from "@/components/BracketView";
 import RankingsTable from "@/components/RankingsTable";
 import TeamsView from "@/components/TeamsView";
 import ScheduleView from "@/components/ScheduleView";
@@ -15,6 +16,7 @@ const TABS = [
   { id: "scores", label: "Scores", emoji: "⚽" },
   { id: "how", label: "How it works", emoji: "📖" },
   { id: "groups", label: "Groups", emoji: "🗂️" },
+  { id: "bracket", label: "Bracket", emoji: "🏆" },
   { id: "rankings", label: "Rankings", emoji: "📊" },
   { id: "teams", label: "Teams", emoji: "🌍" },
   { id: "schedule", label: "Schedule", emoji: "🗓️" },
@@ -60,6 +62,7 @@ export default function HomePage() {
         {tab === "scores" && <ScoresView />}
         {tab === "how" && <HowItWorks />}
         {tab === "groups" && <GroupsView />}
+        {tab === "bracket" && <BracketView />}
         {tab === "rankings" && <RankingsTable />}
         {tab === "teams" && <TeamsView />}
         {tab === "schedule" && <ScheduleView />}
