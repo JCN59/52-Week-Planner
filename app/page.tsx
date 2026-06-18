@@ -1,86 +1,85 @@
 "use client";
 
 import { useState } from "react";
-import UploadForm from "@/components/UploadForm";
-import EstimateResults from "@/components/EstimateResults";
-import CodeCompliance from "@/components/CodeCompliance";
-import type { AnalysisResult } from "@/lib/types";
+import DailyBriefingView from "@/components/DailyBriefing";
+import ScoresView from "@/components/ScoresView";
+import HowItWorks from "@/components/HowItWorks";
+import GroupsView from "@/components/GroupsView";
+import BracketView from "@/components/BracketView";
+import RankingsTable from "@/components/RankingsTable";
+import TeamsView from "@/components/TeamsView";
+import ScheduleView from "@/components/ScheduleView";
+import InstallBanner from "@/components/InstallBanner";
+import { TOURNAMENT } from "@/lib/worldcup-data";
+
+const TABS = [
+  { id: "today", label: "Today", emoji: "📅" },
+  { id: "scores", label: "Scores", emoji: "⚽" },
+  { id: "how", label: "How it works", emoji: "📖" },
+  { id: "groups", label: "Groups", emoji: "🗂️" },
+  { id: "bracket", label: "Bracket", emoji: "🏆" },
+  { id: "rankings", label: "Rankings", emoji: "📊" },
+  { id: "teams", label: "Teams", emoji: "🌍" },
+  { id: "schedule", label: "Schedule", emoji: "🗓️" },
+] as const;
+
+type TabId = (typeof TABS)[number]["id"];
 
 export default function HomePage() {
-  const [result, setResult] = useState<AnalysisResult | null>(null);
-  const [loading, setLoading] = useState(false);
-  const [error, setError] = useState<string | null>(null);
-
-  async function handleSubmit(form: FormData) {
-    setLoading(true);
-    setError(null);
-    setResult(null);
-    try {
-      const res = await fetch("/api/analyze", { method: "POST", body: form });
-      const data = await res.json();
-      if (!res.ok) {
-        setError(data.error || `Request failed: ${res.status}`);
-      } else {
-        setResult(data as AnalysisResult);
-      }
-    } catch (err) {
-      setError(err instanceof Error ? err.message : String(err));
-    } finally {
-      setLoading(false);
-    }
-  }
+  const [tab, setTab] = useState<TabId>("today");
 
   return (
-    <main className="max-w-6xl mx-auto px-4 py-8 md:py-12">
-      <header className="mb-8 text-center">
-        <h1 className="text-4xl md:text-5xl font-bold uppercase tracking-widest mb-2">
-          Blueprint Estimator
+    <main className="max-w-6xl mx-auto px-4 py-8 md:py-10">
+      <header className="text-center mb-6">
+        <div className="text-4xl mb-1">⚽🏆</div>
+        <h1 className="text-3xl md:text-4xl font-extrabold tracking-tight">
+          World Cup 2026
         </h1>
-        <p className="text-blue-200 text-sm md:text-base">
-          Upload plans → AI extracts the building → get a line-item estimate and code-compliance checklist
+        <p className="text-emerald-200/70 text-sm mt-1">
+          A beginner&apos;s tracker · {TOURNAMENT.hosts} · {TOURNAMENT.dates}
         </p>
       </header>
 
-      <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
-        <div>
-          <UploadForm onSubmit={handleSubmit} loading={loading} />
-          {error && (
-            <div className="mt-4 blueprint-card rounded-lg p-4 border-red-500/50 text-red-200 text-sm">
-              <strong>Error:</strong> {error}
-            </div>
-          )}
-        </div>
+      <InstallBanner />
 
-        <div>
-          {loading && (
-            <div className="blueprint-card rounded-lg p-12 text-center">
-              <div className="text-blue-200 text-sm uppercase tracking-wider animate-pulse">
-                Analyzing plan…
-              </div>
-            </div>
-          )}
-          {result && !loading && (
-            <div className="space-y-6">
-              <EstimateResults result={result} />
-              <CodeCompliance checks={result.compliance} />
-              <div className="blueprint-card rounded-lg p-4 text-xs text-blue-200/80 italic">
-                {result.disclaimer}
-              </div>
-            </div>
-          )}
-          {!result && !loading && !error && (
-            <div className="blueprint-card rounded-lg p-12 text-center text-blue-200">
-              <div className="text-6xl mb-4">📐</div>
-              <p className="uppercase tracking-wider text-sm">
-                Results will appear here
-              </p>
-            </div>
-          )}
-        </div>
-      </div>
+      {/* Tab nav */}
+      <nav className="flex flex-wrap justify-center gap-2 mb-8">
+        {TABS.map((t) => (
+          <button
+            key={t.id}
+            onClick={() => setTab(t.id)}
+            className={`text-sm px-4 py-2 rounded-full border transition ${
+              tab === t.id
+                ? "bg-emerald-500 text-emerald-950 border-emerald-500 font-semibold"
+                : "border-white/15 text-emerald-100/80 hover:border-emerald-400/50"
+            }`}
+          >
+            <span className="mr-1">{t.emoji}</span>
+            {t.label}
+          </button>
+        ))}
+      </nav>
 
-      <footer className="mt-12 text-center text-xs text-blue-200/60">
-        Powered by Claude · Estimates are ballpark · Code compliance is informational, not a substitute for licensed review
+      <section>
+        {tab === "today" && <DailyBriefingView />}
+        {tab === "scores" && <ScoresView />}
+        {tab === "how" && <HowItWorks />}
+        {tab === "groups" && <GroupsView />}
+        {tab === "bracket" && <BracketView />}
+        {tab === "rankings" && <RankingsTable />}
+        {tab === "teams" && <TeamsView />}
+        {tab === "schedule" && <ScheduleView />}
+      </section>
+
+      <footer className="mt-14 text-center text-xs text-emerald-200/50 space-y-1">
+        <p>
+          Made for newcomers to soccer. Team data and early results are a snapshot — for live scores
+          check an official source.
+        </p>
+        <p>
+          The &quot;Today&quot; update is generated by Claude (add an ANTHROPIC_API_KEY for fresh
+          daily write-ups; otherwise a sample update is shown).
+        </p>
       </footer>
     </main>
   );
