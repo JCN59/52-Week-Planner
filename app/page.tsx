@@ -9,6 +9,7 @@ import BracketView from "@/components/BracketView";
 import RankingsTable from "@/components/RankingsTable";
 import TeamsView from "@/components/TeamsView";
 import ScheduleView from "@/components/ScheduleView";
+import InstallBanner from "@/components/InstallBanner";
 import { TOURNAMENT } from "@/lib/worldcup-data";
 
 const TABS = [
@@ -38,6 +39,8 @@ export default function HomePage() {
           A beginner&apos;s tracker · {TOURNAMENT.hosts} · {TOURNAMENT.dates}
         </p>
       </header>
+
+      <InstallBanner />
 
       {/* Tab nav */}
       <nav className="flex flex-wrap justify-center gap-2 mb-8">
