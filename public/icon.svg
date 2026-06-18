@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" role="img" aria-label="World Cup 2026">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#15803d"/>
+      <stop offset="1" stop-color="#04210f"/>
+    </linearGradient>
+  </defs>
+  <rect width="512" height="512" rx="112" fill="url(#bg)"/>
+  <circle cx="256" cy="256" r="150" fill="#ffffff" stroke="#0b3d24" stroke-width="6"/>
+  <!-- soccer ball seams radiating from the centre pentagon -->
+  <g stroke="#0b1a12" stroke-width="11" stroke-linecap="round">
+    <line x1="256" y1="208" x2="256" y2="106"/>
+    <line x1="301.6" y1="241.2" x2="398.6" y2="209.7"/>
+    <line x1="284.2" y1="294.8" x2="344.2" y2="377.4"/>
+    <line x1="227.8" y1="294.8" x2="167.8" y2="377.4"/>
+    <line x1="210.4" y1="241.2" x2="113.4" y2="209.7"/>
+  </g>
+  <!-- centre pentagon -->
+  <polygon points="256,208 301.6,241.2 284.2,294.8 227.8,294.8 210.4,241.2" fill="#0b1a12"/>
+</svg>
