@@ -12,6 +12,13 @@ The businesses:
 | **CNC** | CN Capital Group | Commercial mortgage |
 | **SGS** | Star Gazer Swag Shop | Merch / e-commerce |
 
+## ⭐ Start here (July 2026 rebuild)
+
+1. **`JUNE-POSTMORTEM.md`** — the honest assessment of what went wrong.
+2. **`REBUILD-AND-DAILY-PLAN.md`** — the rebuilt system + your day-by-day
+   calendar (Mon–Sun rhythm) through Aug 23.
+3. **`weekly-plans-cycle-1.md`** — the predefined theme for every week.
+
 ## The core idea
 
 > **Plan the week → press the button → Claude does the work → score the week.**
