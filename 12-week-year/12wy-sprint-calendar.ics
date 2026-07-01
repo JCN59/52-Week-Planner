@@ -1,0 +1,92 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//12 Week Year Sprint//Chris Nassief//EN
+CALSCALE:GREGORIAN
+METHOD:PUBLISH
+X-WR-CALNAME:12 Week Year Sprint (Jul 1 - Aug 23)
+X-WR-TIMEZONE:America/New_York
+BEGIN:VEVENT
+UID:12wy-daily-mission@stargazer
+DTSTAMP:20260701T120000Z
+DTSTART:20260701T080000
+DTEND:20260701T081500
+RRULE:FREQ=DAILY;COUNT=54
+SUMMARY:☀️ 12WY Mission + Today's #1 Action
+DESCRIPTION:MY MISSION (edit me):\n"I run my businesses on purpose\, not by accident. Consistent action — not perfect ideas — builds TMES\, CN Capital\, and Star Gazer. I do the work I can control every day\, and I score it every Monday. By August 23 I will have proof\, not excuses."\n\nBefore anything else: name your ONE most important action today. Do it first.
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:12WY Mission
+TRIGGER:-PT5M
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:12wy-monday-command@stargazer
+DTSTAMP:20260701T120000Z
+DTSTART:20260706T090000
+DTEND:20260706T120000
+RRULE:FREQ=WEEKLY;BYDAY=MO;COUNT=7
+SUMMARY:🟦 COMMAND DAY — Score, Plan, Create (12WY)
+DESCRIPTION:The most important 3 hours of your week.\n1) /score-week — score last week vs COMMIT (85% target). Update dashboard.\n2) /plan-week — approve this week's predefined themes.\n3) /run-week — batch-create the WHOLE week's content and schedule it.\nEnd of today = the week runs on autopilot.
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Command Day
+TRIGGER:-PT15M
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:12wy-tue-stargazer@stargazer
+DTSTAMP:20260701T120000Z
+DTSTART:20260707T090000
+DTEND:20260707T110000
+RRULE:FREQ=WEEKLY;BYDAY=TU;COUNT=7
+SUMMARY:🟩 Star Gazer Day (PRIMARY)
+DESCRIPTION:Post the week's creatives (IG+FB) organic. Activate the promo. Reply to every comment & DM. Check Shopify orders + inventory. NO paid ad without a ROAS check (cap $10/day\, kill under 2.0).
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Star Gazer Day
+TRIGGER:-PT15M
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:12wy-wed-tmes@stargazer
+DTSTAMP:20260701T120000Z
+DTSTART:20260701T090000
+DTEND:20260701T113000
+RRULE:FREQ=WEEKLY;BYDAY=WE;COUNT=8
+SUMMARY:🟨 TMES Day (SECONDARY)
+DESCRIPTION:Publish TMES post + blog. THEN the real lead measure: 15 realtor/partner touches + 10 borrower/past-client follow-ups. Log every one. This is where loans come from. NMLS + Equal Housing on all posts.
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:TMES Day
+TRIGGER:-PT15M
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:12wy-thu-cncapital@stargazer
+DTSTAMP:20260701T120000Z
+DTSTART:20260702T090000
+DTEND:20260702T103000
+RRULE:FREQ=WEEKLY;BYDAY=TH;COUNT=8
+SUMMARY:🟧 CN Capital — Maintenance
+DESCRIPTION:Keep it warm, don't let it drain the sprint. 10 owner/broker contacts, review any deal packages. Post only on the weeks the calendar calls for it. Goal: 2 qualified deals in pipeline by Aug 23.
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:CN Capital
+TRIGGER:-PT15M
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:12wy-fri-push@stargazer
+DTSTAMP:20260701T120000Z
+DTSTART:20260703T090000
+DTEND:20260703T103000
+RRULE:FREQ=WEEKLY;BYDAY=FR;COUNT=8
+SUMMARY:🟪 Publish & Push + Numbers Check
+DESCRIPTION:Publish the week's videos/reels. Engage across all accounts. NUMBERS CHECK vs COMMIT: SGS week-to-date profit, TMES touches done vs 15, CNC contacts. Fix any gap TODAY. Schedule weekend SGS post.
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Publish and Push
+TRIGGER:-PT15M
+END:VALARM
+END:VEVENT
+END:VCALENDAR
