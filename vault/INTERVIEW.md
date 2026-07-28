@@ -52,3 +52,16 @@ changes before making them.
   Claude Code as the main working brain.
 - Significant time on Meta advertising for Stargazer products — currently not
   really working.
+
+**2. The four companies (priority order):**
+1. **Stargazer Swag Shop** — print-on-demand apparel business; having trouble
+   getting it off the ground. Products sourced via "Scup" (confirm spelling);
+   Meta ads run on Charley's Meta MBA blueprint. Ads currently underperforming.
+2. **The Mortgage Exchange Service (tmes.com)** — residential mortgage company:
+   home purchases, refinances, reverse mortgages.
+3. **CN Capital Group** — commercial mortgage company: multifamily and all
+   commercial building lending, plus capital raising for investors.
+4. **Virginia Commercial Floors** — family commercial flooring company run by
+   sister Gina and brother Tom; bids on contractor and government work. Role:
+   marketing help — Claude already built them a website; goal is optimizing
+   the company.
