@@ -1,0 +1,7 @@
+# Never commit private notes (see AGENTS.md → Privacy boundaries)
+70-private/*
+!70-private/README.md
+
+# Obsidian workspace state (machine-specific; keep vault portable)
+.obsidian/workspace.json
+.obsidian/workspace-mobile.json
