@@ -42,3 +42,13 @@ changes before making them.
 ---
 
 *Answers (if typing instead of talking):*
+
+## Interview answers — 2026-07-28
+
+**1. Daily life & roles:**
+- Four companies: Stargazer Swag Shop, The Mortgage Exchange Service (= tmes.com),
+  CN Capital Group, and Virginia Commercial Floors (helping out family).
+- Most of the week goes to learning new programs and implementing ideas, using
+  Claude Code as the main working brain.
+- Significant time on Meta advertising for Stargazer products — currently not
+  really working.
