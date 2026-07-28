@@ -65,3 +65,20 @@ changes before making them.
    sister Gina and brother Tom; bids on contractor and government work. Role:
    marketing help — Claude already built them a website; goal is optimizing
    the company.
+
+**Found in Google Drive (2026-07-28 scan, to confirm):**
+- Owner is **Chris Nassief** (The Mortgage Exchange Service LLC). TMES serves
+  Northern Virginia & Maryland. Content voice: first person, educational,
+  honest, no urgency tactics, grade 8, no em dashes, include NMLS number.
+- Stargazer: unit economics sheet — AOV $34.50/shirt, COGS $8.50, shipping
+  $5.75, merchant fee 2.9%; UGC ad playbook (Arcads framework adapted to
+  Higgsfield: Seedance/Kling/Nano Banana).
+- CN Capital Group: "CN VALOR Capital" branding; active deal analysis —
+  Beverly Hills Court, 300–302 W. Glebe Rd, Alexandria VA, 26-unit
+  multifamily value-add, investor summary Apr 2026. Relip playbook for
+  lending-business growth.
+- TMES content: reverse-mortgage sales letters/headlines, VantageScore 4.0
+  articles + social posts.
+- Note: claude.ai Project folders are NOT visible from Claude Code — Drive,
+  this repo, and artifacts are the reachable sources. Key Drive docs should
+  be summarized into the vault so every tool sees them.
