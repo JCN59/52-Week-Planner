@@ -66,3 +66,99 @@ lib/
   prompt.ts               # Claude system + user prompt for the briefing
   mock-briefing.ts        # fallback used when no API key
 ```
+
+---
+
+# 🎬 Video Agent — Mission Control
+
+A second app lives in this repo at **`/video`**: an agent-driven video pipeline built on
+[HyperFrames](https://github.com/heygen-com/hyperframes), HeyGen's open-source
+"write HTML, render video" framework.
+
+```
+angle → script → footage → composition → motion QA → MP4
+```
+
+**It runs end to end with no API keys.** Every generation step degrades to a local
+placeholder and says so, so the timing, motion, layout, preview, and render path are all
+exercised whether or not you are paying for pixels.
+
+## What each stage does
+
+- **📡 Topic radar** — a niche in, arguable *angles* out (Claude, or an offline template set).
+- **📝 Brief** — workflow preset, runtime, format (AI presenter / voice-over / faceless),
+  aspect, and which provider generates the footage.
+- **✍️ Script** — a script cut to picture: every scene carries narration, on-screen text,
+  a B-roll prompt, a camera move, and a duration. Fully editable, and **nothing downstream
+  runs until you approve it**.
+- **🎞️ Footage** — one clip per scene plus the presenter, via pluggable providers.
+- **🎬 Composition** — a real HyperFrames document: `data-start`/`data-duration` timing and
+  one paused GSAP timeline on `window.__timelines`. Previewed in-app by an injected runtime
+  that implements the renderer's own seek contract, so what you scrub is what gets encoded.
+- **🔍 Motion QA** — reads the keyframes back and reports what would look wrong: a camera
+  past its overscan, four identical moves in a row, narration nobody can say in the time
+  given. **Fix & recheck** applies what it can and recomposes.
+- **📼 Render** — `npx hyperframes render` against the project directory, which already
+  *is* a HyperFrames project. The exact command is always shown, so you can run it yourself.
+
+## Keyframes, and why they are a data structure here
+
+Camera moves are authored as normalized keyframes (`lib/video/motion.ts`), compiled to
+absolute seconds and pixels for a given scene and canvas, and only then emitted as GSAP
+calls. That indirection is the whole point: the UI, the QA pass, and the renderer all read
+the same keyframe list, so motion can be *inspected and corrected*, not just watched.
+
+Arc motion falls out of the same model with no motion-path plugin. Each scene's camera is
+three nested wrappers (`x`, `y`, `scale`); an arc is a linear `x` track paired with an
+eased, bowed `y` track. Only `x`/`y`/`scale`/`opacity` are ever animated — the properties
+HyperFrames documents as seek-safe.
+
+## Setup
+
+```sh
+npm install
+cp .env.example .env.local     # every key is optional
+npm run dev                    # then open /video
+```
+
+| Variable | Effect when unset |
+| --- | --- |
+| `ANTHROPIC_API_KEY` | Angles and scripts come from offline templates |
+| `FAL_KEY` (+ `FAL_VIDEO_MODEL`) | B-roll falls back to local placeholder cards |
+| `HEYGEN_API_KEY`, `HEYGEN_AVATAR_ID`, `HEYGEN_VOICE_ID` | Presenter falls back to a narrator card |
+| `VIDEO_DATA_DIR` | Projects are written to `./.data/video-projects` |
+
+Rendering additionally needs **Node 22+** and **FFmpeg** on `PATH`.
+
+## Driving it from an agent
+
+The UI is a thin client over `/api/video/*`; an agent can run the same pipeline with
+`curl`. `.claude/skills/video-agent/SKILL.md` documents the endpoints, how to read the QA
+report, and the HyperFrames authoring contract for hand-written compositions.
+
+## Project structure
+
+```
+app/video/page.tsx              # Mission Control
+app/api/video/
+  config/                       # workflows, motion presets, provider availability
+  radar/                        # niche -> angles
+  projects/                     # list / create
+  projects/[id]/                # read / patch / delete
+  projects/[id]/script/         # research + scripting
+  projects/[id]/assets/         # generation, and serving generated files
+  projects/[id]/compose/        # write index.html + run QA
+  projects/[id]/qa/             # motion QA, with auto-correct
+  projects/[id]/render/         # shell out to the hyperframes CLI
+  projects/[id]/preview/        # composition + injected preview runtime
+components/video/               # Mission Control UI
+lib/video/
+  motion.ts                     # keyframe presets and their compilation
+  compose.ts                    # keyframes -> HyperFrames HTML + GSAP
+  qa.ts                         # motion QA and auto-correct
+  pipeline.ts                   # the stages
+  providers/                    # fal.ai, HeyGen, and the placeholder fallback
+  cli.ts                        # hyperframes render / keyframes bridge
+  store.ts                      # filesystem project store
+public/video/preview-runtime.js # the seek contract, live in an iframe
+```

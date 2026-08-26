@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import Link from "next/link";
 import DailyBriefingView from "@/components/DailyBriefing";
 import ScoresView from "@/components/ScoresView";
 import HowItWorks from "@/components/HowItWorks";
@@ -38,6 +39,12 @@ export default function HomePage() {
         <p className="text-emerald-200/70 text-sm mt-1">
           A beginner&apos;s tracker · {TOURNAMENT.hosts} · {TOURNAMENT.dates}
         </p>
+        <Link
+          href="/video"
+          className="mt-3 inline-block rounded-lg border border-white/15 px-3 py-1.5 text-xs text-emerald-100/80 transition hover:border-emerald-400/60 hover:text-emerald-100"
+        >
+          🎬 Video Agent · Mission Control
+        </Link>
       </header>
 
       <InstallBanner />
